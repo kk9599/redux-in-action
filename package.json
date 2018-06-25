@@ -1,8 +1,8 @@
 {
-  "name": "ReduxInAction",
+  "name": "redux-in-action",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tsx",
+  "main": "index.ts",
   "scripts": {
     "start": "webpack"
   },
@@ -13,11 +13,13 @@
     "office-ui-fabric-react": "^6.18.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
+    "@types/react-redux": "^6.0.2",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.9.0",
