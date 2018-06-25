@@ -1,5 +1,5 @@
 taken from Manning book "Redux in Action"
-converted sample from babal/js to react
+converted sample from babal/js to typescript
 
 # NOTE
 
