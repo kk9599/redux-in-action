@@ -2,6 +2,8 @@
 .DT_Store
 .idea
 package-lock.json
-yarn.lock 
+yarn.lock
 src/**/*.js
 src/**/*.js.map
+build
+dist

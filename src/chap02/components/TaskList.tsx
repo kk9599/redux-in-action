@@ -4,6 +4,7 @@ import { ITask, Task } from './Task';
 export interface ITaskListProps {
     tasks: ITask[];
     status: string;
+    onStatusChange: (id: number, status: string) => void;
 }
 
 export const TaskList = (props: ITaskListProps) => (
@@ -12,7 +13,7 @@ export const TaskList = (props: ITaskListProps) => (
             <strong>{props.status}</strong>
         </div>
         {props.tasks.map(task => (
-            <Task key={task.id} task={task} />
+            <Task key={task.id} task={task} onStatusChange={props.onStatusChange} />
         ))}
     </div>
 );

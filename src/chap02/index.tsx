@@ -1,15 +1,16 @@
 import * as React from "react";
-import { createStore } from 'redux';
+import { createStore } from "redux";
 import tasks from "./reducers/index";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { App } from './App';
+import { ConnectedApp } from "./App";
+import "./index.scss";
 
 const store = createStore(tasks);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <ConnectedApp />
     </Provider>,
     document.getElementById("root")
 );

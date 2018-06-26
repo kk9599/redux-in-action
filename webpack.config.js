@@ -4,7 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var extractCSS = new ExtractTextPlugin("main.css");
 
 module.exports = {
-    entry: "./src/chap02/index",
+    entry: "./src/chap02/index.tsx",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "build"),
@@ -30,7 +30,7 @@ module.exports = {
                 loader: "ts-loader",
                 options: { silent: true, transpileOnly: true }
             },
-            
+
             // These packages contain their own source map links which
             // should be removed before they are put into our bundle
             {
@@ -56,6 +56,7 @@ module.exports = {
     plugins: [
         extractCSS
     ],
+    devtool: "source-map",
     resolve: {
         modules: [path.resolve("./src"), "node_modules"],
         extensions: [".js", ".ts", ".tsx", ".jsx"]
