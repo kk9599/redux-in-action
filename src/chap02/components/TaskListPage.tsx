@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ITask } from "./Task";
 import { TaskList } from "./TaskList";
+import { ITask } from '../Redux/TaskContracts';
 
 export const TASK_STATUSES: string[] = ["Unstarted", "In Progress", "Completed"];
 

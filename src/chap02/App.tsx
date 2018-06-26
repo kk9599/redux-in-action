@@ -1,39 +1,42 @@
 import * as React from "react";
-import { TaskListPage } from './components/TaskListPage';
-import { connect } from 'react-redux';
-import { createTask, editTask, IAction } from './actions';
+import { TaskListPage } from "./components/TaskListPage";
+import { connect } from "react-redux";
 import "./App.scss";
-import { ITask } from './components/Task';
+import { ITask, IState } from "./Redux/TaskContracts";
+import { Dispatch } from "redux";
+import { TaskActionsCreator } from "./Redux/TaskActions";
 
 export interface IConnectedProps {}
 
+export interface IAppActions {}
+
 export interface IAppProps extends IConnectedProps {
     tasks: ITask[];
-    dispatch: (action: IAction) => void;
+    onCreateTask: (title: string, description: string) => any;
+    onStatusChange: (id: number, status: string) => any;
 }
 
 class App extends React.Component<IAppProps, {}> {
     public render(): JSX.Element {
         return (
             <div className="main-content">
-                <TaskListPage tasks={this.props.tasks} onCreateTask={this.onCreateTask} onStatusChange={this.onStatusChange} />
+                <TaskListPage tasks={this.props.tasks} onCreateTask={this.props.onCreateTask} onStatusChange={this.props.onStatusChange} />
             </div>
         );
     }
-
-    private onCreateTask = (title: string, description: string): void => {
-        this.props.dispatch(createTask(title, description));
-    }
-
-    private onStatusChange = (id: number, status: string): void => {
-        this.props.dispatch(editTask(id, status));
-    }
 }
 
-export const mapStateToProps = (state: any): any => {
+export const mapStateToProps = (state: IState): Partial<IAppProps> => {
     return {
-        tasks: state.tasks
-    }
-}
+        tasks: state.tasksState.tasks
+    };
+};
 
-export const ConnectedApp: React.ComponentClass<IConnectedProps> = connect(mapStateToProps)(App);
+export const mapDispatchToProps = (dispatch: Dispatch): Partial<IAppProps> => {
+    return {
+        onCreateTask: (title: string, description: string) => dispatch(TaskActionsCreator.createTaskAction(title, description)),
+        onStatusChange: (id: number, status: string) => dispatch(TaskActionsCreator.editTaskStatus(id, status))
+    };
+};
+
+export const ConnectedApp: React.ComponentClass<IConnectedProps> = connect(mapStateToProps, mapDispatchToProps)(App);

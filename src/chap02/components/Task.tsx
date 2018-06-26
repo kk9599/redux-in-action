@@ -1,12 +1,6 @@
 import * as React from "react";
 import { TASK_STATUSES } from './TaskListPage';
-
-export interface ITask {
-    id: number;
-    title: string;
-    description: string;
-    status: string;
-}
+import { ITask } from '../Redux/TaskContracts';
 
 export interface ITaskProps {
     task: ITask;

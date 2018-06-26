@@ -1,5 +1,6 @@
 import * as React from "react";
-import { ITask, Task } from './Task';
+import { Task } from './Task';
+import { ITask } from '../Redux/TaskContracts';
 
 export interface ITaskListProps {
     tasks: ITask[];

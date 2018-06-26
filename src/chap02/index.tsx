@@ -1,15 +1,18 @@
+import "./index.scss";
+
 import * as React from "react";
-import { createStore } from "redux";
-import tasks from "./reducers/index";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedApp } from "./App";
-import "./index.scss";
+import { configureStore } from './Redux/TaskStore';
+import { IReduxContext } from 'util/Store';
+import { IState } from './Redux/TaskContracts';
+import { DefaultPageContext } from 'util/PageContext';
 
-const store = createStore(tasks);
+const reduxContext: IReduxContext<IState> = configureStore(new DefaultPageContext());
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={reduxContext.store}>
         <ConnectedApp />
     </Provider>,
     document.getElementById("root")
